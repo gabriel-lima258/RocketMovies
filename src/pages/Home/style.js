@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
     width: 100%;
@@ -45,12 +46,13 @@ export const Content = styled.div`
     }
 `
 
-export const NewMovie = styled.button` // estou linkando a uma pagina com react router
+export const NewMovie = styled(Link)` // estou linkando a uma pagina com react router
     height: 48px;
     padding: 16px 32px;
     border-radius: 8px;
 
     background-color: ${({theme}) => theme.COLORS.PINK};
+    color: ${({theme}) => theme.COLORS.BACKGROUND_BLACK};
 
     display: flex;
     align-items: center;

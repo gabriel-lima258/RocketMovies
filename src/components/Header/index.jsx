@@ -1,5 +1,6 @@
 import { Container, Profile, Brand, Search} from "./style";
 import { Input } from "../Input";
+import { Link } from 'react-router-dom';
 
 export function Header(){
     return(
@@ -15,7 +16,7 @@ export function Header(){
             <Profile>
                 <div>
                     <strong>Gabriel Lima da Silva</strong>
-                    <a href="/">sair</a>
+                    <Link to="/SignIn">sair</Link>
                 </div>
                 <img 
                     src="https://github.com/gabriel-lima258.png" 

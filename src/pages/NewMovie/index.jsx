@@ -18,7 +18,7 @@ export function NewMovie(){
             <main>
                 <Form>
                     <header>
-                        <a href="#"> <FiArrowLeft/> Voltar</a>
+                        <Link to="/"> <FiArrowLeft/>Voltar</Link>
                         <h1>Novo filme</h1>
                     </header>
                     <div className="title">
@@ -37,8 +37,7 @@ export function NewMovie(){
                     <div className="buttons">
                         <Button title="Excluir filme"/>
                         <Button $newsave title="Salvar alterações"/>
-                    </div>
-                    
+                    </div>      
                 </Form>
             </main>
         </Container>

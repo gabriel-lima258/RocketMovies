@@ -5,6 +5,7 @@ import {WiTime2} from 'react-icons/wi'
 
 import {Header} from "../../components/Header";
 import {Tag} from '../../components/Tags';
+import { Link } from 'react-router-dom';
 
 
 export function Details(){
@@ -14,7 +15,7 @@ export function Details(){
 
             <main>
                 <Content>
-                    <a href="/"><FiArrowLeft/>Voltar</a>
+                    <Link to="/"><FiArrowLeft/>Voltar</Link>
                     <h1>Insterestellar<RiStarSFill/><RiStarSFill/><RiStarSFill/><RiStarSFill/><RiStarSLine/></h1>
                     
                     <Profile>
