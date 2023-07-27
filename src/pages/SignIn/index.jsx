@@ -1,38 +1,32 @@
-import { Container, Form, Background} from "./style";
-
-
-import {Input} from '../../components/Input';
-import {Button} from "../../components/Button";
-import {FiLogIn, FiMail, FiLock} from 'react-icons/fi'; 
+import { useAuth } from "../../hooks/auth";
 import { Link } from "react-router-dom";
 
-export function SignIn(){
-    return(
-        <Container>
-            <Form>
-            <h1>RocketMovies</h1>
+import { Container, Form, Background } from "./style";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
+import { FiLogIn, FiMail, FiLock } from "react-icons/fi";
 
-            <p>Aplicação para aompanhar tudo que quiser assistir.</p>
+export function SignIn() {
+  const data = useAuth(); // usando a função hook criada 
 
-            <h2>Faça seu login</h2>
+  return (
+    <Container>
+      <Form>
+        <h1>RocketMovies</h1>
 
-            <Input
-                placeholder="E-mail"
-                type='text'
-                icon={FiMail}
-            />
-            <Input
-                placeholder="Senha"
-                type='password'
-                icon={FiLock}
-            />
+        <p>Aplicação para aompanhar tudo que quiser assistir.</p>
 
-            <Button title="Entrar" $newsave/>
-            
-            <Link to="/register">Criar conta</Link>
-            </Form>
+        <h2>Faça seu login</h2>
 
-            <Background/>
-        </Container>
-    );
+        <Input placeholder="E-mail" type="text" icon={FiMail} />
+        <Input placeholder="Senha" type="password" icon={FiLock} />
+
+        <Button title="Entrar" $newsave />
+
+        <Link to="/register">Criar conta</Link>
+      </Form>
+
+      <Background />
+    </Container>
+  );
 }
