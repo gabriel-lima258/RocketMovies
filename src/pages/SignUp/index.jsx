@@ -63,7 +63,7 @@ export function SignUp(){
             />
 
             <Button title="Cadastrar" $newsave onClick={handleSignUp}/>
-            <Link to="/SignIn">
+            <Link to="/">
                 <FiArrowLeft/>
                 Volte para o login
             </Link>

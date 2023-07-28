@@ -1,8 +1,15 @@
 import { Container, Profile, Brand, Search} from "./style";
 import { Input } from "../Input";
 import { Link } from 'react-router-dom';
+import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
 
 export function Header(){
+
+    const {signOut, user} = useAuth();
+
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder; // se o  user tiver foto carregar img, senão img padrão
+
     return(
         <Container>
             <Brand>
@@ -15,13 +22,16 @@ export function Header(){
 
             <Profile>
                 <div>
-                    <strong>Gabriel Lima da Silva</strong>
-                    <Link to="/">sair</Link>
+                    <strong>{user.name}</strong>
+                    <Link onClick={signOut}>sair</Link>
                 </div>
-                <img 
-                    src="https://github.com/gabriel-lima258.png" 
-                    alt="foto de Gabriel Lima" 
-                />
+                <Link to="/profile">
+                    <img 
+                    src={avatarUrl} 
+                    alt={user.name} 
+                    />
+                </Link>
+                
             </Profile>
         </Container>
     );

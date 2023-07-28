@@ -38,13 +38,13 @@ export const Profile = styled.div`
     display: flex;
     align-items: center;
 
-    > img {
+    img {
         height: 64px;
         width: 64px;
         border-radius: 50%;
         border: 1px solid ${({theme}) => theme.COLORS.GRAY_200};
     }
-
+    
     > div {
         display: flex;
         flex-direction: column;
