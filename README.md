@@ -7,6 +7,7 @@ Esse é um projeto feito com biblioteca React integrado com o back-end sobre um 
 
 **Front-end** 
 - React
+- Styled-components
 
 **Back-end** 
 - Node
