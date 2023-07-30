@@ -66,10 +66,11 @@ export function NewMovie(){
             description,
             rating,
             tags
-        }).then(() => {
-            alert("Nota criada com sucesso!");
-            handleBack();
         })
+
+        alert("Nota criada com sucesso!");
+        handleBack();
+        
     } catch(error) {
         error.response ? error.response.data.message : "Não foi possível cadastrar este filme..."
     }
