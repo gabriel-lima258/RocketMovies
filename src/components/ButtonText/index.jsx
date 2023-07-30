@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Container } from "./style";
 
 export function ButtonText({title, link , icon: Icon, ...rest}) {
