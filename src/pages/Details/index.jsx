@@ -1,49 +1,100 @@
 import {Container, Content, Profile, Description} from './style'
-import {RiStarSFill, RiStarSLine} from 'react-icons/ri'
-import {FiArrowLeft} from 'react-icons/fi'
+import {FiArrowLeft, FiTrash2} from 'react-icons/fi'
 import {WiTime2} from 'react-icons/wi'
 
 import {Header} from "../../components/Header";
+import { Stars } from '../../components/Stars';
+import { ButtonText } from '../../components/ButtonText';
 import {Tag} from '../../components/Tags';
-import { Link } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg';
+
+import { useAuth } from '../../hooks/auth';
+import { api } from '../../services/api';
+import { useState, useEffect } from 'react';
 
 export function Details(){
+    const [data, setData] = useState({})
+
+    const params = useParams();
+    const navigate = useNavigate();
+
+    const { user } = useAuth();
+
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+
+    function handleBack(){
+        navigate(-1); // não empilha o histórico de navegação
+    }
+
+    async function handleExcludeFilm(){
+        const confirm = window.confirm(`Deseja excluir a nota do filme '${data.title}'?`);
+
+        if(!confirm){
+            return
+        }
+
+        await api.delete(`notes/${params.id}`)
+        handleBack();
+        alert("Filme excluído com sucesso!");
+    }
+
+    useEffect(() => {
+        async function fetchNotes(){
+            const response = await api.get(`notes/${params.id}`)
+            setData(response.data);
+        }
+
+        fetchNotes();
+    }, [])
+
     return(
         <Container>
             <Header/>
-
-            <main>
                 <Content>
-                    <Link to="/"><FiArrowLeft/>Voltar</Link>
-                    <h1>Insterestellar<RiStarSFill/><RiStarSFill/><RiStarSFill/><RiStarSFill/><RiStarSLine/></h1>
-                    
                     <Profile>
-                    <div>
-                        <img 
-                        src="https://github.com/gabriel-lima258.png" 
-                        alt="foto de Gabriel Lima" 
-                        />
-                        <span>
-                            Por Gabriel Lima
-                        </span>
-                        <span>
-                            <WiTime2/>23/05/22 às 08:00
-                        </span>
+                    <div className="Buttons">
+                        <ButtonText title="Voltar" icon={FiArrowLeft} onClick={handleBack}/>
+                        <ButtonText title="Deletar" icon={FiTrash2} onClick={handleExcludeFilm}/>
                     </div>
-                    </Profile>
 
-                    <Description>
-                        <Tag title="Ficção Científica"/>
-                        <Tag title="Drama"/>
-                        <Tag title="Família"/>
+                    <div className="Title">
+                        <h1>{data.title}</h1>
+                        <Stars rating={data.rating}/>
+                    </div>
+                    
+                    <div className="Info">
+                        <img 
+                        src={avatarUrl} 
+                        alt={user.name} 
+                        />
                         <p>
-                            Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação secreta da NASA liderada pelo professor John Brand. O cientista revela que um buraco de minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições de sobrevivência para a espécie humana. As "missões Lázaro" enviadas anos antes identificaram três planetas potencialmente habitáveis orbitando o buraco negro Gargântua: Miller, Edmunds e Mann – nomeados em homenagem aos astronautas que os pesquisaram. Brand recruta Cooper para pilotar a nave espacial Endurance e recuperar os dados dos astronautas; se um dos planetas se mostrar habitável, a humanidade irá seguir para ele na instalação da NASA, que é na realidade uma enorme estação espacial. A partida de Cooper devasta Murphy.
-                            Além de Cooper, a tripulação da Endurance é formada pela bióloga Amelia, filha de Brand; o cientista Romilly, o físico planetário Doyle, além dos robôs TARS e CASE. Eles entram no buraco de minhoca e se dirigem a Miller, porém descobrem que o planeta possui enorme dilatação gravitacional temporal por estar tão perto de Gargântua: cada hora na superfície equivale a sete anos na Terra. Eles entram em Miller e descobrem que é inóspito já que é coberto por um oceano raso e agitado por ondas enormes. Uma onda atinge a tripulação enquanto Amelia tenta recuperar os dados de Miller, matando Doyle e atrasando a partida. Ao voltarem para a Endurance, Cooper e Amelia descobrem que 23 anos se passaram.
+                            Por {user.name}
+                        </p>
+                        <WiTime2/>
+                        <p>
+                           {data.updated_at}
+                        </p>
+                    </div>
+            
+                    </Profile>
+                    <Description>
+
+                        {
+                            data.tags &&
+                            data.tags.map(tag => (
+                                <Tag 
+                                    key={String(tag.id)}
+                                    title={tag.name}
+                                />
+                            ))
+                        }
+                        <p>
+                           {data.description}
                         </p>    
                     </Description>
                 </Content>
-            </main>
         </Container>
     );
 }

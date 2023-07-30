@@ -4,79 +4,77 @@ export const Container = styled.div`
     width: 100%;
     height: 100vh;
 
-    display: grid;
-    grid-template-rows: 116px auto;
-    grid-template-areas:
-    "header"
-    "content";
-
-    > main {
-        grid-area: content;
-        overflow-y: scroll;
-
-        &::-webkit-scrollbar{
-            width: 8px;    
-            border: 1px solid black;
-        }
-        &::-webkit-scrollbar-thumb {
-            background: ${({theme}) => theme.COLORS.PINK};
-            border-radius: 10px;
-        }
-    }
+    overflow-y: hidden;
 `
-export const Content = styled.div`
-    max-width: 1100px;
-    margin: 40px auto;
+export const Content = styled.main`
+    width: 100%;
+    height: 550px;
+    padding: 40px 120px;
+    overflow-y: scroll;
 
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
+    gap: 40px;
 
-    > a {
-      color: ${({theme}) => theme.COLORS.PINK};
+    &::-webkit-scrollbar{
+            width: 8px;    
+            border: 1px solid black;
+    }
+    &::-webkit-scrollbar-thumb {
+            background: ${({theme}) => theme.COLORS.PINK};
+            border-radius: 10px;
     }
 
-    > h1 {
-        font-size: 36px;
-        margin: 24px 0;
-
-        svg {
-        color: ${({theme}) => theme.COLORS.PINK};
-        margin-left: 10px;
-        height: 20px;
-        width: 20px;
-        }
+    > p {
+        text-align: justify;
+        word-wrap: break-word;
     }
 `
 
 export const Profile = styled.div`
-    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 
-    > div {
+    .Buttons{
         display: flex;
-        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .Title{
+        display: flex;
+        align-items: baseline;
+        gap: 19px;
+
+        font-size: 20px;
+
+        h1 {
+            font-size: 20px;
+        }
+    }
+
+    .Info {
+        display: flex;
         align-items: center;
         gap: 8px;
 
-        span {
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-        color: ${({theme}) => theme.COLORS.WHITE};
+        font-size: 16px;
 
-            svg {
-                height: 16px;
-                width: 16px;
-                color: ${({theme}) => theme.COLORS.PINK}
-            }
+        img{
+            width: 16px;
+            height: 16px;
+            border-radius: 16px;
+            border: ${({theme})=> theme.COLORS.BLACK};
         }
-        img {
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        border: 1px solid ${({theme}) => theme.COLORS.GRAY_200};
+
+        svg{
+            color: ${({theme})=> theme.COLORS.PINK};
         }
     }
+     
+    
 `
 
 export const Description = styled.div`

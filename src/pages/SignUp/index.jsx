@@ -1,11 +1,12 @@
 import {useState} from 'react'; // cria um estado dinâmico de dados com back-end
 import { Container, Form, Background} from "./style";
-import { Link, useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom'; 
 
 import { api } from '../../services/api'; 
 
 import {Input} from '../../components/Input';
 import {Button} from "../../components/Button";
+import { ButtonText } from '../../components/ButtonText';
 import {FiUser, FiMail, FiLock, FiArrowLeft} from 'react-icons/fi'; 
 
 export function SignUp(){
@@ -23,7 +24,7 @@ export function SignUp(){
         api.post("/users", {name, email, password})
         .then(() => {
             alert("Usuário cadastrado com sucesso!"); // chama o then caso dê certo a aplicação
-            navigate("/SignIn"); 
+            navigate("/"); 
         })
         .catch(error => { // catch caso dê erro
             if(error.response){
@@ -63,10 +64,7 @@ export function SignUp(){
             />
 
             <Button title="Cadastrar" $newsave onClick={handleSignUp}/>
-            <Link to="/">
-                <FiArrowLeft/>
-                Volte para o login
-            </Link>
+            <ButtonText link="/" icon={FiArrowLeft} title="Voltar para o login"/>
             </Form>
 
             <Background/>

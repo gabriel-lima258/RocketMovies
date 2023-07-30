@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom'
 import { useState } from 'react'
 import { api } from '../../services/api'
 import { useNavigate } from 'react-router-dom'
@@ -12,6 +11,7 @@ import {TextArea} from '../../components/TextArea'
 import {Section} from '../../components/Section'
 import {NoteItem} from '../../components/NoteItem'
 import {Button} from '../../components/Button'
+import { ButtonText } from '../../components/ButtonText'
 
 export function NewMovie(){
     const [title, setTitle] = useState("");
@@ -22,6 +22,15 @@ export function NewMovie(){
     const [newTag, setNewTag] = useState(""); // adiciona os tags atuais
 
     const navigate = useNavigate();
+
+    function handleBack(){
+        navigate(-1);
+    }
+
+    function handleConfirm(){
+        const confirmRemove = window.confirm("Deseja sair sem salvar nenhuma alteração?")
+        confirmRemove ? handleBack() : null;
+    }
 
     function handleAddTag(){
         setTags(prevState => [...prevState, newTag]); // mantém todos os conteúdos anteriores e guarda os novos tags
@@ -51,15 +60,21 @@ export function NewMovie(){
             return alert("Você deixou uma tag no campo para adicionar, mas não clicou em adicionou. Click para adicionar ou deixe vazio!")
         }
 
+        try {
         await api.post("/notes", { // parâmetros do back-end
             title,
             description,
             rating,
             tags
-        });
+        }).then(() => {
+            alert("Nota criada com sucesso!");
+            navigate("/")
+        })
+    } catch(error) {
+        error.response ? error.response.data.message : "Não foi possível cadastrar este filme..."
+    }
 
-        alert("Nota criada com sucesso!");
-        navigate("/")
+        
     }
 
     return(
@@ -69,7 +84,7 @@ export function NewMovie(){
             <main>
                 <Form>
                     <header>
-                        <Link to="/"> <FiArrowLeft/>Voltar</Link>
+                        <ButtonText title= "Voltar" icon={FiArrowLeft} onClick={handleBack}/>
                         <h1>Novo filme</h1>
                     </header>
                     <div className="title">
@@ -112,7 +127,10 @@ export function NewMovie(){
                     </Section>
 
                     <div className="buttons">
-                        <Button title="Excluir filme"/>
+                        <Button 
+                        title="Excluir filme"
+                        onClick={handleConfirm}
+                        />
                         <Button 
                         $newsave 
                         title="Salvar alterações"

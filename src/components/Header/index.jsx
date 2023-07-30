@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Container, Profile, Brand, Search} from "./style";
 import { Input } from "../Input";
 import { Link } from 'react-router-dom';
@@ -6,8 +7,7 @@ import { api } from "../../services/api";
 
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg';
 
-export function Header(){
-
+export function Header({onChange}){
     const {signOut, user} = useAuth();
 
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder; // se o  user tiver foto carregar img, senão img padrão
@@ -19,7 +19,10 @@ export function Header(){
             </Brand>
 
             <Search>
-                <Input placeholder="Pesquisar pelo título"/>
+                <Input 
+                placeholder="Pesquisar pelo título"
+                onChange={onChange}
+                />
             </Search>
 
             <Profile>

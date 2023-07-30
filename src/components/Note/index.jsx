@@ -1,19 +1,13 @@
-import {Container} from "./style";
-import {Tag} from "../Tags"
-
-import {RiStarSFill, RiStarSLine} from 'react-icons/ri'
+/* eslint-disable react/prop-types */
+import { Container } from "./style";
+import { Tag } from "../Tags"
+import { Stars } from "../Stars";
 
 export function Note({data, ...rest}){
     return(
         <Container {...rest}>
             <h1>{data.title}</h1>
-            <div>
-                <RiStarSFill/>
-                <RiStarSFill/>
-                <RiStarSFill/>
-                <RiStarSFill/>
-                <RiStarSLine/>
-            </div>
+            <Stars rating={data.rating}/>
             <p>{data.description}</p>
             {
                 data.tags && // caso exista tag, cria um footer

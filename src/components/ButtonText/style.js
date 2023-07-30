@@ -1,9 +1,16 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const Container = styled.button`
-    background: none;
-    color: ${({theme, $isactive}) => $isactive ? theme.COLORS.PINK : theme.COLORS.PINK};
+export const Container = styled(Link)`
+        
+        color: ${({theme}) => theme.COLORS.PINK};
+        
 
-    border: none;
-    font-size: 14px;
-`;
+        display: flex;
+        align-items: center;
+
+        font-size: 16px;
+
+        gap: 5px;
+
+`

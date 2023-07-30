@@ -24,14 +24,17 @@ export function Profile(){
     const [avatarFile, setAvatarFile] = useState(null); // para trocar um novo avatar
 
     async function handleUpdate(){
-        const user = { // criei um objeto com os parâmetros desejados
+        const updated = { // criei um objeto com os parâmetros desejados
             name,
             email,
             password: passwordNew,
             old_password: passwordOld
         }
 
-        await updateProfile({user, avatarFile}); // passando o objeto para dentro da função
+        const userUpdate = Object.assign(user, updated); // Object.assign é usado para copiar todas as propriedades valores de dois objetos em um único
+        console.log(userUpdate);
+
+        await updateProfile({user: userUpdate, avatarFile}); // passando o objeto para dentro da função
     }
 
     function handleChangeAvatar(event){

@@ -1,11 +1,11 @@
 import { useState } from "react"; // estados para armazenar informações
 import { useAuth } from "../../hooks/auth";
-import { Link } from "react-router-dom";
 
 import { Container, Form, Background } from "./style";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
-import { FiLogIn, FiMail, FiLock } from "react-icons/fi";
+import { ButtonText } from "../../components/ButtonText";
+import { FiMail, FiLock } from "react-icons/fi";
 
 export function SignIn() {
 
@@ -46,7 +46,7 @@ export function SignIn() {
         onClick={handleSignIn}
         />
 
-        <Link to="/register">Criar conta</Link>
+        <ButtonText link="/register" title="Criar conta"/>
       </Form>
 
       <Background />
