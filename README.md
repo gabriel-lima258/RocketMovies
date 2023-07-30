@@ -8,10 +8,20 @@ Esse é um projeto feito com biblioteca React integrado com o back-end sobre um 
 **Front-end** 
 - React
 - Styled-components
+- React-icons
+- React-router-dom
+- axios
 
 **Back-end** 
 - Node
 - Express
+
+**Para acessar a parte do Back-End click [Aqui](https://github.com/gabriel-lima258/NODE_JS-API)**
+
+
+## 🔖 Layout
+
+Você pode visualizar o layout do projeto através desse [Link](https://www.figma.com/file/PIJUIxufMLKo9UXSpM4Hdb/RocketMovies-(Copy)?node-id=0%3A1&t=Y2T5o9qxTJtaSTZT-0). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
 
 ##  :computer: Instalação do Front-end 
 
