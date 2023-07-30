@@ -1,17 +1,17 @@
 import { useState } from 'react'
 import { api } from '../../services/api'
 import { useNavigate } from 'react-router-dom'
+import {FiArrowLeft} from 'react-icons/fi'
 
 import {Container, Form} from './style'
 
-import {FiArrowLeft} from 'react-icons/fi'
+import {Section} from '../../components/Section'
 import {Header} from '../../components/Header'
 import {Input} from '../../components/Input'
 import {TextArea} from '../../components/TextArea'
-import {Section} from '../../components/Section'
 import {NoteItem} from '../../components/NoteItem'
 import {Button} from '../../components/Button'
-import { ButtonText } from '../../components/ButtonText'
+import {ButtonText} from '../../components/ButtonText'
 
 export function NewMovie(){
     const [title, setTitle] = useState("");
