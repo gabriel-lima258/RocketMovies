@@ -68,7 +68,7 @@ export function NewMovie(){
             tags
         }).then(() => {
             alert("Nota criada com sucesso!");
-            navigate("/")
+            handleBack();
         })
     } catch(error) {
         error.response ? error.response.data.message : "Não foi possível cadastrar este filme..."
