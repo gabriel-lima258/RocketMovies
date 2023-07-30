@@ -1,5 +1,13 @@
 
 <h1 align="center">Rocket Movie / Front-end com Back-End</h1>
+
+##  :movie_camera: Preview
+
+Aqui está um preview do projeto em funcionamento:
+
+![Preview]()
+
+
 Esse é um projeto feito com biblioteca React integrado com o back-end sobre um site de filmes favoritos, inspirado pelas aulas vistas na plataforma Rocketseat.
 
 
