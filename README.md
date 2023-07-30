@@ -9,7 +9,6 @@ https://github.com/gabriel-lima258/RocketMovies_Front-End/assets/116119327/01a9d
 
 Esse é um projeto feito com biblioteca React integrado com o back-end sobre um site de filmes favoritos, inspirado pelas aulas vistas na plataforma Rocketseat.
 
-
 ## 🚀 Tecnologias utilizadas
 
 **Front-end** 
@@ -76,6 +75,11 @@ Inicia o node
 ## 🧑‍💻 Aprendizados
 
 Esse projeto me ensinou a conectar o React junto ao Node, principalmente na autenticação de usuários, upload de arquivos de imagem e toda integração com as funcionalidades rodando corretamente, de primeira instância foi inovador, mas um projeto base para consolidar conhecimentos para aplicações web com funções e chamadas assíncronas ao decorrer da codificação.
+
+## :star: Deploy Site
+
+- https://rocketmovie123.netlify.app/
+
 
 ## :memo: Licença
 
