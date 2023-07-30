@@ -5,8 +5,7 @@
 
 Aqui está um preview do projeto em funcionamento:
 
-![Preview]()
-
+https://github.com/gabriel-lima258/RocketMovies_Front-End/assets/116119327/01a9d43d-b35a-4327-aaaf-19f3e4374e11
 
 Esse é um projeto feito com biblioteca React integrado com o back-end sobre um site de filmes favoritos, inspirado pelas aulas vistas na plataforma Rocketseat.
 
